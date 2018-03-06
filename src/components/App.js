@@ -5,13 +5,13 @@ import DealList from './DealList';
 
 class App extends React.Component {
   state = {
-    deals: [],
+    deals: []
   }
   async componentDidMount() {
     const deals = await ajax.fetchInitialDeals();
     // console.log(deals)
     this.setState((prevState) => {
-      return { deals };
+      return { deals }
     });
   }
   render() {
