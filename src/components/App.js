@@ -22,13 +22,23 @@ class App extends React.Component {
       currentDealId: dealId
     }));
   }
+  unsetCurrentDeal = (dealId) => {
+    this.setState({
+      currentDealId: null
+    });
+  }
   currentDeal = () => {
     return this.state.deals.find(
       (deal) => deal.key === this.state.currentDealId);
   }
   render() {
     if (this.state.currentDealId){
-      return <DealDetail initialDealData={this.currentDeal()} />
+      return (
+        <DealDetail
+          initialDealData={this.currentDeal()}
+          onBack={this.unsetCurrentDeal}
+        />
+      ); 
     }
     if (this.state.deals.length > 0){
       return <DealList
